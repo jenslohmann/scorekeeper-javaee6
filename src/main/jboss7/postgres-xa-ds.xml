@@ -1,0 +1,42 @@
+<datasources>
+    <xa-datasource jndi-name="java:/ds/postgresDS" pool-name="postgresDS" enabled="true" use-java-context="true" use-ccm="true">
+        <xa-datasource-class>org.postgresql.xa.PGXADataSource</xa-datasource-class>
+        <xa-datasource-property name="PortNumber">5432</xa-datasource-property>
+        <xa-datasource-property name="DatabaseName">postgres</xa-datasource-property>
+        <xa-datasource-property name="ServerName">localhost</xa-datasource-property>
+
+        <driver>postgresql-9.2-1002.jdbc4.jar</driver>
+
+        <!--
+        <new-connection-sql>select 1</new-connection-sql>
+        <transaction-isolation>TRANSACTION_READ_COMMITTED</transaction-isolation>
+         -->
+
+        <xa-pool>
+            <min-pool-size>10</min-pool-size>
+            <max-pool-size>20</max-pool-size>
+            <is-same-rm-override>true</is-same-rm-override>
+            <prefill>false</prefill>
+            <use-strict-min>false</use-strict-min>
+            <flush-strategy>FailingConnectionOnly</flush-strategy>
+            <no-tx-separate-pools/>
+        </xa-pool>
+
+        <security>
+            <user-name>postgres</user-name>
+            <password>admin</password>
+            <!--
+            <security-domain>mysecurity-realm</security-domain>
+            -->
+        </security>
+
+        <!--
+        <validation>
+            <check-valid-connection-sql>select 1</check-valid-connection-sql>
+        </validation>
+         -->
+    </xa-datasource>
+    <!--drivers>
+        <driver name="postgresql-9.2-1002.jdbc4.jar" module="org.postgresql"/>
+    </drivers -->
+</datasources>
