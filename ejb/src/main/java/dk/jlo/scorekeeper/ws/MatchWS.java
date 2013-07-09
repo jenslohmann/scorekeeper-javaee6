@@ -13,6 +13,7 @@ import javax.jws.WebParam;
 import javax.jws.WebService;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashSet;
 
 @Stateless
 @WebService(serviceName = "MatchWS")
@@ -48,7 +49,7 @@ public class MatchWS {
         ArrayList<Score> scores = new ArrayList<Score>(2);
         scores.add(aScore1);
         scores.add(aScore2);
-        match.setScores(scores);
+        match.setScores(new HashSet<Score>(scores));
         Tournament aTournament = new Tournament();
         aTournament.setName(tournament);
         match.setTournament(aTournament);

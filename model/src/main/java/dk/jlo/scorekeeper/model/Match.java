@@ -3,7 +3,7 @@ package dk.jlo.scorekeeper.model;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Calendar;
-import java.util.Collection;
+import java.util.Set;
 
 @Table(name = "matches", schema = "scorekeeper", catalog = "postgres")
 @Entity
@@ -13,7 +13,7 @@ public class Match implements Serializable {
     private Calendar time;
     private Long version;
     private Tournament tournament;
-    private Collection<Score> scores;
+    private Set<Score> scores;
 
     @Column(name = "id", nullable = false, insertable = true, updatable = true, length = 19, precision = 0)
     @GeneratedValue(generator = "seq", strategy = GenerationType.SEQUENCE)
@@ -57,11 +57,11 @@ public class Match implements Serializable {
     }
 
     @OneToMany(mappedBy = "match")
-    public Collection<Score> getScores() {
+    public Set<Score> getScores() {
         return scores;
     }
 
-    public void setScores(Collection<Score> scores) {
+    public void setScores(Set<Score> scores) {
         this.scores = scores;
     }
 

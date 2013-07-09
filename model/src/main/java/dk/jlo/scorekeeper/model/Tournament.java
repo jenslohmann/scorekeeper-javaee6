@@ -2,7 +2,7 @@ package dk.jlo.scorekeeper.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.Set;
 
 @Entity
 @Table(name = "tournaments", schema = "scorekeeper")
@@ -11,7 +11,7 @@ public class Tournament implements Serializable {
     private Long id;
     private Long version;
     private String name;
-    private Collection<Match> matchesInTournament;
+    private Set<Match> matchesInTournament;
 
     @Column(name = "id", nullable = false, insertable = true, updatable = true, length = 19, precision = 0)
     @GeneratedValue(generator = "seq", strategy = GenerationType.SEQUENCE)
@@ -44,11 +44,11 @@ public class Tournament implements Serializable {
     }
 
     @OneToMany(mappedBy = "tournament")
-    public Collection<Match> getMatchesInTournament() {
+    public Set<Match> getMatchesInTournament() {
         return matchesInTournament;
     }
 
-    public void setMatchesInTournament(Collection<Match> matchesInTournament) {
+    public void setMatchesInTournament(Set<Match> matchesInTournament) {
         this.matchesInTournament = matchesInTournament;
     }
 
