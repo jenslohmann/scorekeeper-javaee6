@@ -4,9 +4,9 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
 
-@Table(name = "teams", schema = "scorekeeper", catalog = "postgres")
+@Table(name = "teams", schema = "scorekeeper")
 @Entity
-@SequenceGenerator(name = "seq")
+@SequenceGenerator(name = "seq", schema = "scorekeeper")
 public class Team implements Serializable {
     private Long id;
     private String name;

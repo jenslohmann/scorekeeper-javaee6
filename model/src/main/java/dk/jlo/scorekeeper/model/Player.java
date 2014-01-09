@@ -6,7 +6,7 @@ import java.util.Collection;
 
 @Entity
 @Table(name="players")
-@SequenceGenerator(name = "seq")
+@SequenceGenerator(name = "seq", schema = "scorekeeper")
 public class Player implements Serializable {
     private Long id;
     private Long version;

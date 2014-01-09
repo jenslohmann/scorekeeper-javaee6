@@ -9,13 +9,10 @@ import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.jboss.shrinkwrap.resolver.api.maven.Maven;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.w3c.dom.Document;
-import org.w3c.dom.NodeList;
 
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLConnection;
 
 @RunWith(Arquillian.class)
 public class MyTest {
@@ -39,19 +36,23 @@ public class MyTest {
         URL url = new URL("http://localhost:8080/ejb-1.0.0-SNAPSHOT/MatchWS/MatchWS");
         HttpURLConnection httpConn = (HttpURLConnection) url.openConnection();
         ByteArrayOutputStream bout = new ByteArrayOutputStream();
-        String xmlInput = "  <soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:web=\"http://litwinconsulting.com/webservices/\">\n" +
-                        "   <soapenv:Header/>\n" +
-                        "   <soapenv:Body>\n" +
-                        "      <web:GetWeather>\n" +
-                        "         <!--Optional:-->\n" +
-                        "         <web:City></web:City>\n" +
-                        "      </web:GetWeather>\n" +
-                        "   </soapenv:Body>\n" +
-                        "  </soapenv:Envelope>";
+        String xmlInput = "  <soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" " +
+                "xmlns:sc=\"http://ws.scorekeeper.jlo.dk/\">" +
+                "   <soapenv:Header/>\n" +
+                "   <soapenv:Body>\n" +
+                "      <sc:createMatch>\n" +
+                "        <tournament>A</tournament>\n" +
+                "          <team1>A</team1>\n" +
+                "          <team2>B</team2>\n" +
+                "          <score1>1</score1>\n" +
+                "          <score2>2</score2>\n" +
+                "      </sc:createMatch>\n" +
+                "   </soapenv:Body>\n" +
+                "  </soapenv:Envelope>";
 
         bout.write(xmlInput.getBytes());
         byte[] b = bout.toByteArray();
-        String SOAPAction = "http://litwinconsulting.com/webservices/GetWeather";
+        String SOAPAction = "http://ws.scorekeeper.jlo.dk/createMatch";
         // Set the appropriate HTTP parameters.
         httpConn.setRequestProperty("Content-Length", String.valueOf(b.length));
         httpConn.setRequestProperty("Content-Type", "text/xml; charset=utf-8");

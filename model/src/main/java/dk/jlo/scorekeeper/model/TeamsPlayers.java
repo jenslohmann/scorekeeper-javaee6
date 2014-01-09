@@ -4,8 +4,8 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "teams_players", schema = "scorekeeper", catalog = "postgres")
-@SequenceGenerator(name = "seq")
+@Table(name = "teams_players", schema = "scorekeeper")
+@SequenceGenerator(name = "seq", schema = "scorekeeper")
 public class TeamsPlayers implements Serializable {
     private Long id;
     private Player player;

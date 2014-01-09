@@ -55,6 +55,11 @@
                 <version>4.11</version>
                 <scope>test</scope>
             </dependency>
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>1.6.1</version>
+            </dependency>
             <!-- Override dependency resolver with test version.
      This must go *BEFORE* the Arquillian BOM. -->
             <dependency>

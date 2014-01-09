@@ -5,9 +5,9 @@ import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Set;
 
-@Table(name = "matches", schema = "scorekeeper", catalog = "postgres")
+@Table(name = "matches", schema = "scorekeeper")
 @Entity
-@SequenceGenerator(name = "seq")
+@SequenceGenerator(name = "seq", schema = "scorekeeper")
 public class Match implements Serializable {
     private Long id;
     private Calendar time;

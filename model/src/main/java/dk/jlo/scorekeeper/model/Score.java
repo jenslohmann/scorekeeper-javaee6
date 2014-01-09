@@ -5,8 +5,8 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "scores", schema = "scorekeeper", catalog = "postgres")
-@SequenceGenerator(name = "seq")
+@Table(name = "scores", schema = "scorekeeper")
+@SequenceGenerator(name = "seq", schema = "scorekeeper")
 public class Score implements Serializable {
     private Long id;
     private Long version;
