@@ -36,7 +36,7 @@ public class MyTest {
         URL url = new URL("http://localhost:8080/ejb-1.0.0-SNAPSHOT/MatchWS/MatchWS");
         HttpURLConnection httpConn = (HttpURLConnection) url.openConnection();
         ByteArrayOutputStream bout = new ByteArrayOutputStream();
-        String xmlInput = "  <soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" " +
+        String xmlInput = "<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" " +
                 "xmlns:sc=\"http://ws.scorekeeper.jlo.dk/\">" +
                 "   <soapenv:Header/>\n" +
                 "   <soapenv:Body>\n" +
