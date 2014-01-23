@@ -6,13 +6,8 @@
         <configuration>
             <!-- property name="javaHome">${jdk.home}</property -->
             <property name="jbossHome">/Users/jens/apps/jboss-as-7.1.1.Final</property>
-            <property name="httpPort">8080</property>
-            <property name="rmiPort">1099</property>
+            <!-- Don't do periodic GC during test -->
             <property name="javaVmArguments">-Xmx512m -Xmx768m -XX:MaxPermSize=256m
-                -Djava.net.preferIPv4Stack=true
-                -Djava.util.logging.manager=org.jboss.logmanager.LogManager
-                -Djava.endorsed.dirs=${jboss.home}/lib/endorsed
-                -Djboss.boot.server.log.dir=${jboss.home}
                 -Dsun.rmi.dgc.client.gcInterval=3600000 -Dsun.rmi.dgc.server.gcInterval=3600000
             </property>
         </configuration>
@@ -21,3 +16,8 @@
         <property name="deploymentExportPath">target/deployments</property>
     </engine>
 </arquillian>
+
+        <!-- -Djava.net.preferIPv4Stack=true
+        -Djava.util.logging.manager=org.jboss.logmanager.LogManager
+        -Djava.endorsed.dirs=${jboss.home}/lib/endorsed
+        -Djboss.boot.server.log.dir=${jboss.home} -->
