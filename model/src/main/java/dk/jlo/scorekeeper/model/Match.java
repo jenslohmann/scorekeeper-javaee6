@@ -7,7 +7,7 @@ import java.util.Set;
 
 @Table(name = "matches", schema = "scorekeeper")
 @Entity
-@SequenceGenerator(name = "seq", schema = "scorekeeper")
+@SequenceGenerator(name = "match_seq", schema = "scorekeeper", sequenceName = "hibernate_sequence")
 public class Match implements Serializable {
     private Long id;
     private Calendar time;
@@ -16,7 +16,7 @@ public class Match implements Serializable {
     private Set<Score> scores;
 
     @Column(name = "id", nullable = false, insertable = true, updatable = true, length = 19, precision = 0)
-    @GeneratedValue(generator = "seq", strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(generator = "match_seq", strategy = GenerationType.SEQUENCE)
     @Id
     public Long getId() {
         return id;
@@ -27,7 +27,7 @@ public class Match implements Serializable {
     }
 
     @Column(name = "time", nullable = false, insertable = true, updatable = true, length = 35, precision = 6)
-    @Basic
+    @Temporal(TemporalType.TIMESTAMP)
     public Calendar getTime() {
         return time;
     }

@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "scores", schema = "scorekeeper")
-@SequenceGenerator(name = "seq", schema = "scorekeeper")
+@SequenceGenerator(name = "score_seq", schema = "scorekeeper", sequenceName = "hibernate_sequence")
 public class Score implements Serializable {
     private Long id;
     private Long version;
@@ -15,7 +15,7 @@ public class Score implements Serializable {
     private long score;
 
     @Column(name = "id", nullable = false, insertable = true, updatable = true, length = 19, precision = 0)
-    @GeneratedValue(generator = "seq", strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(generator = "score_seq", strategy = GenerationType.SEQUENCE)
     @Id
     public Long getId() {
         return id;
